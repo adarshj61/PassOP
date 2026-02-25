@@ -23,7 +23,7 @@ A **secure and modern password manager web application** built using the **MERN 
 
 ## 🚀 Demo
 
-![PassOp Website Screenshot](screenshot1.png)
+![PassOp Website Screenshot](snapshot.png)
 
 🔗 **Live Demo:** _(Coming Soon)_
 
