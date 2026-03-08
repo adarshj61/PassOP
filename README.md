@@ -118,6 +118,6 @@ I’m open to collaboration, internships, and exciting project ideas. Feel free 
   </a>
 
   <a href="#" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=firefox&logoColor=white" />
+    
   </a>
 </p>
