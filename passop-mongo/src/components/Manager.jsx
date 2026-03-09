@@ -11,7 +11,7 @@ const Manager = () => {
     const [passwordArray, setPasswordArray] = useState([])
 
     const getPasswords = async () => {
-        let req = await fetch("hhttps://pass-op-eta.vercel.app")
+        let req = await fetch("https://pass-op-eta.vercel.app")
         let passwords = await req.json()
         setPasswordArray(passwords)
     }
