@@ -1,17 +1,19 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
+const bodyparser = require("body-parser");
 const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyparser.json());
 app.use(cors());
 
 const client = new MongoClient(process.env.MONGO_URI);
 const dbName = process.env.DB_NAME;
+
+client.connect();
 
 // GET passwords
 app.get("/", async (req, res) => {
@@ -39,4 +41,6 @@ app.delete("/", async (req, res) => {
   res.json({ success: true, result });
 });
 
-module.exports = app;
+module.exports = (req, res) => {
+  app(req, res);
+};
