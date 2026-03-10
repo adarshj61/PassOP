@@ -13,31 +13,38 @@ app.use(cors());
 const client = new MongoClient(process.env.MONGO_URI);
 const dbName = process.env.DB_NAME;
 
-client.connect();
+let db;
+
+// connect only once
+async function connectDB() {
+  if (!db) {
+    await client.connect();
+    db = client.db(dbName);
+  }
+  return db;
+}
 
 // GET passwords
 app.get("/", async (req, res) => {
-  const db = client.db(dbName);
-  const collection = db.collection("passwords");
+  const database = await connectDB();
+  const collection = database.collection("passwords");
   const passwords = await collection.find({}).toArray();
   res.json(passwords);
 });
 
 // POST password
 app.post("/", async (req, res) => {
-  const password = req.body;
-  const db = client.db(dbName);
-  const collection = db.collection("passwords");
-  const result = await collection.insertOne(password);
+  const database = await connectDB();
+  const collection = database.collection("passwords");
+  const result = await collection.insertOne(req.body);
   res.json({ success: true, result });
 });
 
 // DELETE password
 app.delete("/", async (req, res) => {
-  const password = req.body;
-  const db = client.db(dbName);
-  const collection = db.collection("passwords");
-  const result = await collection.deleteOne(password);
+  const database = await connectDB();
+  const collection = database.collection("passwords");
+  const result = await collection.deleteOne(req.body);
   res.json({ success: true, result });
 });
 
