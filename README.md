@@ -25,7 +25,7 @@ A **secure and modern password manager web application** built using the **MERN 
 
 ![PassOp Website Screenshot](snapshot.png)
 
-🔗 **Live Demo:** _(Coming Soon)_
+🔗 **Live Demo:** _(https://pass-op-frontend-one.vercel.app)_
 
 ---
 
